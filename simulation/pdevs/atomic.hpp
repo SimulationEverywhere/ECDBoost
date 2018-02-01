@@ -25,12 +25,14 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_ATOMIC_H
-#define BOOST_SIMULATION_PDEVS_ATOMIC_H
-#include <vector>
-#include <boost/simulation/model.hpp>
+#ifndef ECDBOOST_SIMULATION_PDEVS_ATOMIC_H
+#define ECDBOOST_SIMULATION_PDEVS_ATOMIC_H
 
-namespace boost {
+#include <vector>
+
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -47,7 +49,7 @@ class atomic : public model<TIME>
 {
 public:
     using time_type=TIME;
-    using message_type=MSG; //Message suggested for most simulations is boost::any
+    using message_type=MSG;
     using model_type=atomic<TIME, MSG>;
 
     atomic() noexcept : modelName("atomic") {}
@@ -98,7 +100,5 @@ private:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_ATOMIC_H
-
-
+#endif // ECDBOOST_SIMULATION_PDEVS_ATOMIC_H
 

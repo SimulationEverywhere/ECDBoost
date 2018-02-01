@@ -1,6 +1,5 @@
 /**
- * Copyright (c) 2013-2015, Damian Vicino & Daniella Niyonkuru
- * Modified by Daniella Niyonkuru (21/7/15 -> Port addition)
+ * Copyright (c) 2013-2015, Damian Vicino
  * Carleton University, Universite de Nice-Sophia Antipolis
  * All rights reserved.
  *
@@ -26,32 +25,28 @@
  */
 
 
-#ifndef BOOST_SIMULATION_CONVENIENCE_H
-#define BOOST_SIMULATION_CONVENIENCE_H
-namespace boost {
+#ifndef ECDBOOST_SIMULATION_MODEL_H
+#define ECDBOOST_SIMULATION_MODEL_H
+#include <limits>
+#include <string>
+
+#include <ecdboost/utilities/eTime.h>
+
+namespace ecdboost {
 namespace simulation {
-
 /**
- * @brief create a pointer to a new atomic model of kind MODEL with its constructor parameters
- * @template MODEL model to be constructed
- * @template Args parameters to perfect forward to constructor of model
- * @param args parameters to perfect forward to constructor
- * @return a shared pointer to the atomic model constructed
+ * @brief Model class is the base of the modelling hierarchy.
+ * Main objective is allowing pluging logers and debugging utilities.
  */
+template<class TIME>
+class model {
+public:
+    virtual void registerDebugParameters(std::string name) noexcept {}
+    const TIME infinity= Time::Inf();
 
-//create a shared pointer to a pdevs::atomic model
-template<class MODEL, typename... Args>
-std::shared_ptr<pdevs::atomic<typename MODEL::time_type, typename MODEL::message_type>> make_atomic_ptr(Args... args) noexcept {
-    return std::make_shared<MODEL>(std::forward<Args>(args)...);
-}
-
-//create a shared pointer to a hardware port
-template<class MODEL, typename... Args>
-std::shared_ptr<pdevs::port<typename MODEL::time_type, typename MODEL::message_type>> make_port_ptr(Args... args) noexcept {
-    return std::make_shared<MODEL>(std::forward<Args>(args)...);
-}
+    virtual const std::string asString() const { return ""; };
+};
 
 }
 }
-
-#endif // BOOST_SIMULATION_CONVENIENCE_H
+#endif // ECDBOOST_SIMULATION_MODEL_H

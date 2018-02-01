@@ -25,14 +25,12 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_DRIVER_H
-#define BOOST_SIMULATION_PDEVS_DRIVER_H
-#include <boost/simulation/pdevs/port.hpp>
-#include <boost/simulation/model.hpp>
-//#include "mbed.h"
-//#include "SWO.h"
+#ifndef ECDBOOST_SIMULATION_PDEVS_DRIVER_H
+#define ECDBOOST_SIMULATION_PDEVS_DRIVER_H
 
-namespace boost {
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -146,4 +144,4 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_COUPLED_H
+#endif // ECDBOOST_SIMULATION_PDEVS_DRIVER_H

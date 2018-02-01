@@ -1,5 +1,6 @@
 /**
- * Copyright (c) 2013-2015, Damian Vicino
+ * Copyright (c) 2013-2015, Damian Vicino & Daniella Niyonkuru
+ * Modified by Daniella Niyonkuru for Embedded-CD Boost
  * Carleton University, Universite de Nice-Sophia Antipolis
  * All rights reserved.
  *
@@ -24,29 +25,18 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef ECDBOOST_SIMULATION_HPP
+#define ECDBOOST_SIMULATION_HPP
 
-#ifndef BOOST_SIMULATION_MODEL_H
-#define BOOST_SIMULATION_MODEL_H
-#include <limits>
-#include <string>
+#include <memory>
+#include <ecdboost/simulation/pdevs/atomic.hpp>
+#include <ecdboost/simulation/pdevs/coordinator.hpp>
+#include <ecdboost/simulation/pdevs/coupled.hpp>
+#include <ecdboost/simulation/pdevs/erunner.hpp>
+#include <ecdboost/simulation/pdevs/driver.hpp>
+#include <ecdboost/simulation/convenience.hpp>
+#include <ecdboost/simulation/pdevs/basic_models/event_stream.hpp>
 
-#include "eTime.h"
 
-namespace boost {
-namespace simulation {
-/**
- * @brief Model class is the base of the modelling hierarchy.
- * Main objective is allowing pluging logers and debugging utilities.
- */
-template<class TIME>
-class model {
-public:
-    virtual void registerDebugParameters(std::string name) noexcept {}
-    const TIME infinity= Time::Inf();
+#endif // ECDBOOST_SIMULATION_HPP
 
-    virtual const std::string asString() const { return ""; };
-};
-
-}
-}
-#endif // BOOST_SIMULATION_MODEL_H

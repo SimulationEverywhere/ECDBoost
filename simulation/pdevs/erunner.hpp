@@ -25,18 +25,16 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef BOOST_SIMULATION_PDEVS_ERUNNER_H
-#define BOOST_SIMULATION_PDEVS_ERUNNER_H
+#ifndef ECDBOOST_SIMULATION_PDEVS_ERUNNER_H
+#define ECDBOOST_SIMULATION_PDEVS_ERUNNER_H
 
-//#include <iostream>
-#include <boost/simulation/pdevs/coordinator.hpp>
-#include <boost/simulation/pdevs/driver.hpp>
 #include <boost/any.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "eTime.h"
+#include <ecdboost/simulation.hpp>
+#include <ecdboost/utilities/eTime.h>
 
-namespace boost {
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -190,4 +188,4 @@ public:
 }
 
 
-#endif // BOOST_SIMULATION_PDEVS_ERUNNER_H
+#endif // ECDBOOST_SIMULATION_PDEVS_ERUNNER_H

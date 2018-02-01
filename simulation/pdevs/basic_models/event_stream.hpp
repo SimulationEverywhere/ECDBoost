@@ -25,13 +25,14 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_event_stream_H
-#define BOOST_SIMULATION_PDEVS_event_stream_H
+#ifndef ECDBOOST_SIMULATION_PDEVS_EVENT_STREAM_H
+#define ECDBOOST_SIMULATION_PDEVS_EVENT_STREAM_H
+
 #include <istream>
 #include <sstream>
-#include <boost/simulation/pdevs/atomic.hpp>
+#include <ecboost/simulation.hpp>
 
-namespace boost {
+namespace ecboost {
 namespace simulation {
 namespace pdevs {
 namespace basic_models {
@@ -175,4 +176,4 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_event_stream_H
+#endif // ECDBOOST_SIMULATION_PDEVS_EVENT_STREAM_H

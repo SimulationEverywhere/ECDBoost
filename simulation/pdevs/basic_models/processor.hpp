@@ -25,12 +25,14 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_PROCESSOR_H
-#define BOOST_SIMULATION_PDEVS_PROCESSOR_H
-#include <queue>
-#include <boost/simulation/pdevs/atomic.hpp>
+#ifndef ECDBOOST_SIMULATION_PDEVS_PROCESSOR_H
+#define ECDBOOST_SIMULATION_PDEVS_PROCESSOR_H
 
-namespace boost {
+#include <queue>
+
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 namespace basic_models {
@@ -111,4 +113,4 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_PROCESSOR_H
+#endif // ECDBOOST_SIMULATION_PDEVS_PROCESSOR_H

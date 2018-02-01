@@ -25,13 +25,12 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_PORT_H
-#define BOOST_SIMULATION_PDEVS_PORT_H
+#ifndef ECDBOOST_SIMULATION_PDEVS_PORT_H
+#define ECDBOOST_SIMULATION_PDEVS_PORT_H
 
-#include <boost/simulation/model.hpp>
-//#include "datagram/datagram.hpp"
+#include <ecdboost/simulation.hpp>
 
-namespace boost {
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -85,7 +84,5 @@ private:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_PORT_H
-
-
+#endif // ECDBOOST_SIMULATION_PDEVS_PORT_H
 

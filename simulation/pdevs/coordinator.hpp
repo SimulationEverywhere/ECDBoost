@@ -26,18 +26,17 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_COORDINATOR_H
-#define BOOST_SIMULATION_PDEVS_COORDINATOR_H
+#ifndef ECDBOOST_SIMULATION_PDEVS_COORDINATOR_H
+#define ECDBOOST_SIMULATION_PDEVS_COORDINATOR_H
+
 #include <map>
 #include <queue>
 #include <cassert>
-
-#include <boost/simulation/pdevs/coupled.hpp>
 #include <boost/any.hpp>
-//#include "SWO.h"
-//#include "mbed.h"
 
-namespace boost {
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -568,4 +567,5 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_COORDINATOR_H
+#endif // ECDBOOST_SIMULATION_PDEVS_COORDINATOR_H
+

@@ -25,12 +25,12 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_COUPLED_H
-#define BOOST_SIMULATION_PDEVS_COUPLED_H
-#include <boost/simulation/pdevs/atomic.hpp>
-#include <boost/simulation/model.hpp>
+#ifndef ECDBOOST_SIMULATION_PDEVS_COUPLED_H
+#define ECDBOOST_SIMULATION_PDEVS_COUPLED_H
 
-namespace boost {
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 
@@ -283,4 +283,5 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_COUPLED_H
+#endif // ECDBOOST_SIMULATION_PDEVS_COUPLED_H
+

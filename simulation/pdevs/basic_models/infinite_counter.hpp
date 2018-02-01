@@ -25,12 +25,14 @@
  */
 
 
-#ifndef BOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
-#define BOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
-#include <boost/simulation/pdevs/atomic.hpp>
+#ifndef ECDBOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
+#define ECDBOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
+
 #include <boost/any.hpp>
 
-namespace boost {
+#include <ecdboost/simulation.hpp>
+
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 namespace basic_models {
@@ -125,4 +127,4 @@ public:
 }
 }
 
-#endif // BOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
+#endif // ECDBOOST_SIMULATION_PDEVS_BM_INFINITE_COUNTER_H
