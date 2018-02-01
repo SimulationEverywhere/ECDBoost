@@ -30,9 +30,9 @@
 
 #include <istream>
 #include <sstream>
-#include <ecboost/simulation.hpp>
+#include <ecdboost/simulation.hpp>
 
-namespace ecboost {
+namespace ecdboost {
 namespace simulation {
 namespace pdevs {
 namespace basic_models {
