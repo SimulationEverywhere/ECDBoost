@@ -28,7 +28,9 @@
 #ifndef ECDBOOST_SIMULATION_PDEVS_DRIVER_H
 #define ECDBOOST_SIMULATION_PDEVS_DRIVER_H
 
-#include <ecdboost/simulation.hpp>
+#include <vector>
+
+#include <ecdboost/simulation/pdevs/port.hpp>
 
 namespace ecdboost {
 namespace simulation {

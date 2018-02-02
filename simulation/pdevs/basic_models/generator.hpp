@@ -27,7 +27,10 @@
 
 #ifndef ECDBOOST_SIMULATION_PDEVS_BM_GENERATOR_H
 #define ECDBOOST_SIMULATION_PDEVS_BM_GENERATOR_H
-#include <ecdboost/simulation.hpp>
+
+#include <vector>
+
+#include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
 namespace simulation {

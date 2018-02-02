@@ -34,12 +34,12 @@
 #include <cassert>
 #include <boost/any.hpp>
 
-#include <ecdboost/simulation.hpp>
+#include <ecdboost/simulation/pdevs/coupled.hpp>
+#include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
 namespace simulation {
 namespace pdevs {
-
 
 template<class, class>
 class nullqueue{
@@ -562,10 +562,7 @@ public:
 
 };
 
-
-}
-}
-}
+}}}  // Closing namespaces
 
 #endif // ECDBOOST_SIMULATION_PDEVS_COORDINATOR_H
 

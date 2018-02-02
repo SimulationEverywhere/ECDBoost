@@ -28,6 +28,16 @@
 
 #ifndef ECDBOOST_SIMULATION_CONVENIENCE_H
 #define ECDBOOST_SIMULATION_CONVENIENCE_H
+
+#include <memory>
+
+#include <ecdboost/simulation/pdevs/atomic.hpp>
+#include <ecdboost/simulation/pdevs/port.hpp>
+
+using namespace ecdboost;
+using namespace simulation;
+using namespace pdevs;
+
 namespace ecdboost {
 namespace simulation {
 
@@ -41,17 +51,17 @@ namespace simulation {
 
 //create a shared pointer to a pdevs::atomic model
 template<class MODEL, typename... Args>
-std::shared_ptr<pdevs::atomic<typename MODEL::time_type, typename MODEL::message_type>> make_atomic_ptr(Args... args) noexcept {
+std::shared_ptr<atomic<typename MODEL::time_type, typename MODEL::message_type>> make_atomic_ptr(Args... args) noexcept {
     return std::make_shared<MODEL>(std::forward<Args>(args)...);
 }
 
 //create a shared pointer to a hardware port
 template<class MODEL, typename... Args>
-std::shared_ptr<pdevs::port<typename MODEL::time_type, typename MODEL::message_type>> make_port_ptr(Args... args) noexcept {
+std::shared_ptr<port<typename MODEL::time_type, typename MODEL::message_type>> make_port_ptr(Args... args) noexcept {
     return std::make_shared<MODEL>(std::forward<Args>(args)...);
 }
 
-}
-}
+}}  // Closing namespaces
+
 
 #endif // ECDBOOST_SIMULATION_CONVENIENCE_H

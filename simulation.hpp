@@ -28,14 +28,14 @@
 #ifndef ECDBOOST_SIMULATION_HPP
 #define ECDBOOST_SIMULATION_HPP
 
-#include <memory>
+#include <ecdboost/simulation/convenience.hpp>
+
 #include <ecdboost/simulation/pdevs/atomic.hpp>
-#include <ecdboost/simulation/pdevs/coordinator.hpp>
 #include <ecdboost/simulation/pdevs/coupled.hpp>
 #include <ecdboost/simulation/pdevs/erunner.hpp>
-#include <ecdboost/simulation/pdevs/driver.hpp>
-#include <ecdboost/simulation/convenience.hpp>
-#include <ecdboost/simulation/pdevs/basic_models/event_stream.hpp>
+#include <ecdboost/simulation/pdevs/port.hpp>
+
+#include <ecdboost/simulation/pdevs/basic_models.hpp>
 
 
 #endif // ECDBOOST_SIMULATION_HPP

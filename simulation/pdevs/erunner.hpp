@@ -31,7 +31,8 @@
 #include <boost/any.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include <ecdboost/simulation.hpp>
+#include <ecdboost/simulation/pdevs/coordinator.hpp>
+#include <ecdboost/simulation/pdevs/driver.hpp>
 #include <ecdboost/utilities/eTime.h>
 
 namespace ecdboost {

@@ -30,7 +30,9 @@
 
 #include <queue>
 
-#include <ecdboost/simulation.hpp>
+#include <vector>
+
+#include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
 namespace simulation {

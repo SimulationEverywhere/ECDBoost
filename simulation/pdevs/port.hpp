@@ -28,7 +28,7 @@
 #ifndef ECDBOOST_SIMULATION_PDEVS_PORT_H
 #define ECDBOOST_SIMULATION_PDEVS_PORT_H
 
-#include <ecdboost/simulation.hpp>
+#include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
 namespace simulation {

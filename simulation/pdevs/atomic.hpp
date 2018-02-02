@@ -30,7 +30,7 @@
 
 #include <vector>
 
-#include <ecdboost/simulation.hpp>
+#include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
 namespace simulation {
@@ -96,9 +96,8 @@ private:
     std::string modelName;
 };
 
-}
-}
-}
+}}}  // Closing namespaces
+
 
 #endif // ECDBOOST_SIMULATION_PDEVS_ATOMIC_H
 

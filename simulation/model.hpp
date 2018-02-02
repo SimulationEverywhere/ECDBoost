@@ -27,6 +27,8 @@
 
 #ifndef ECDBOOST_SIMULATION_MODEL_H
 #define ECDBOOST_SIMULATION_MODEL_H
+
+
 #include <limits>
 #include <string>
 
@@ -34,19 +36,21 @@
 
 namespace ecdboost {
 namespace simulation {
+
 /**
  * @brief Model class is the base of the modelling hierarchy.
  * Main objective is allowing pluging logers and debugging utilities.
  */
 template<class TIME>
 class model {
-public:
-    virtual void registerDebugParameters(std::string name) noexcept {}
-    const TIME infinity= Time::Inf();
-
-    virtual const std::string asString() const { return ""; };
+    public:
+        virtual void registerDebugParameters(std::string name) noexcept {}
+        const TIME infinity= Time::Inf();
+        virtual const std::string asString() const { return ""; };
 };
 
-}
-}
+}}  // Closing namespaces
+
+
 #endif // ECDBOOST_SIMULATION_MODEL_H
+

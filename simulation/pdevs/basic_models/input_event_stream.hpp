@@ -36,7 +36,10 @@
 #include <istream>
 #include <sstream>
 
-#include <ecdboost/simulation.hpp>
+#include <vector>
+#include <memory>  // Including shared_ptr
+
+#include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
 namespace simulation {

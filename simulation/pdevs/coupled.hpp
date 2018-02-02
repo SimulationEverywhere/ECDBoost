@@ -28,7 +28,10 @@
 #ifndef ECDBOOST_SIMULATION_PDEVS_COUPLED_H
 #define ECDBOOST_SIMULATION_PDEVS_COUPLED_H
 
-#include <ecdboost/simulation.hpp>
+#include <vector>
+#include <memory>
+
+#include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
 namespace simulation {
