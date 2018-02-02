@@ -3,21 +3,18 @@
 
 #include <iostream>
 #include <string>
+#include <memory>
 
-#include <boost/simulation.hpp>
-//#include <SWO/SWO.h>
+#include <ecdboost/simulation/model.hpp>
 
 using namespace std;
-using namespace boost::simulation;
-using namespace boost::simulation::pdevs;
-using namespace boost::simulation::pdevs::basic_models;
+using namespace ecdboost::simulation;
+using namespace ecdboost::simulation::pdevs;
+using namespace ecdboost::simulation::pdevs::basic_models;
 
 using ToModel_t  = std::shared_ptr<model<Time>>;
 using Value      = int;
 using tofromPort = string;
-//using DestModel = std::shared_ptr<model<Time>>;
-//using Payload = Datagram;
-//using DestPort = string;
 
 struct Message {
 
