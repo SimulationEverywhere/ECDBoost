@@ -1,3 +1,4 @@
+#include <cstdint>
 #include "hwTime.h"
 //#include "mbed-dev/api/mbed.h"
 
