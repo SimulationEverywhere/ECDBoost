@@ -22,13 +22,9 @@
 /** public data **/
 const Time Time::Zero ;                                           // Zero constant
 const Time Time::Inf() {return Time( 32767, 59, 59, 999, 999) ;}  // Infinity constant 
-//RTIME simStartTime;
-Time simStartTime;
+RTIME simStartTime;
+//Time simStartTime;
 
-extern "C" {
-void setLed_Amb();
-void setLed_4();
-}
 
 /*******************************************************************
 * Function Name: Time
@@ -226,98 +222,13 @@ Time &Time::adjust( int &left, int &right, int maxVal )
 * Function Name: currentTime - 
 ********************************************************************/
 /* static */
-Time Time::currentTime()
-{
-//	setLed_4();
-  //Wall-clock real time
-
-	Time tmp (simStartTime);
-
-//	if(tmp == Time() || tmp == Time(0,0,1,0))
-//		setLed_Amb();
-//	else if (tmp == Time(0,0,2,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,3,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,4,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,5,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,6,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,7,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,8,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,9,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-//	else if (tmp == Time(0,0,10,0)) {
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//		setLed_Amb();
-//	}
-  simStartTime = simStartTime + Time(0,0,0,1);
-  return tmp;
-
-//	Time st( rt_timer_read() - simStartTime );
-//	return st;
+Time Time::currentTime() {
+  Time st( rt_timer_read() - simStartTime );
+  return st;
 }
 /*******************************************************************
 * Function Name: set start time using xenomai 
 ********************************************************************/
-void Time::SetStartTime()
-{
-  simStartTime = Time();
-//  simStartTime = rt_timer_read();
+void Time::SetStartTime() {
+  simStartTime = rt_timer_read();
 }
