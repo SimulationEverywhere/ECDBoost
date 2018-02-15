@@ -10,8 +10,6 @@ extern "C" {
 
 #include "usec_time.h"
 
-extern bool usecTimerInited;
-
 
 // Global variables
 int hrs;
@@ -31,8 +29,10 @@ void inc(void){
 }
 
 // returns the current execution time
+bool usecTimerInited = false;
 RTIME rt_timer_read(void){
     if(!usecTimerInited) {
+        usecTimerInited = true;
         initUsecTimer();
     }
     return usecTimestamp();
