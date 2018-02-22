@@ -32,8 +32,6 @@
 #include <limits>
 #include <string>
 
-#include <ecdboost/utilities/eTime.h>
-
 namespace ecdboost {
 namespace simulation {
 
@@ -45,7 +43,7 @@ template<class TIME>
 class model {
     public:
         virtual void registerDebugParameters(std::string name) noexcept {}
-        const TIME infinity= Time::Inf();
+        const TIME infinity= TIME::Inf();
         virtual const std::string asString() const { return ""; };
 };
 

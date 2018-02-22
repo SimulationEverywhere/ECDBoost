@@ -33,7 +33,6 @@
 
 #include <ecdboost/simulation/pdevs/coordinator.hpp>
 #include <ecdboost/simulation/pdevs/driver.hpp>
-#include <ecdboost/utilities/eTime.h>
 
 namespace ecdboost {
 namespace simulation {
@@ -118,7 +117,7 @@ public:
      */
     TIME runUntil(const TIME& t) noexcept
     {
-    	Time::SetStartTime();
+    	TIME::initializeTimer();
         if (_silent){
             while (_next < t)
             {
@@ -127,14 +126,14 @@ public:
             }
 
         } else {
-            while ((Time::currentTime() < t) || ( _next < t)) // should be while currentTime is less then t
+            while ((TIME::currentTime() < t) || ( _next < t)) // should be while currentTime is less then t
             {
-                while(Time::currentTime() < _next){
+                while(TIME::currentTime() < _next){
 
                 	MSG input_message;
                 	if((_driver->get_hardware_event(input_message))){ // Hardware Event Detected
                 		_coordinator->postHardwareEvent(input_message);
-                		_next = Time::currentTime();
+                		_next = TIME::currentTime();
                 		break;
                 	}
                 }
@@ -164,11 +163,11 @@ public:
             while ( _next != infinity)
             {
 
-               while(Time::currentTime() < _next){
+               while(TIME::currentTime() < _next){
                 	MSG input_message;
                 	if(_driver->get_hardware_event(input_message)){ // Hardware Event Detected
                 		_coordinator->postHardwareEvent(input_message);
-                		_next = Time::currentTime();
+                		_next = TIME::currentTime();
                 		break;
                 	}
                 }
