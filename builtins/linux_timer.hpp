@@ -1,16 +1,16 @@
 #ifndef LINUX_TIMER__HPP
 #define LINUX_TIMER__HPP
 
+#include <chrono>
 
 class LinuxTimer {
     public:
         static void initialize();
         static int micro_seconds_since_started();
-        static int get_microseconds();
 
     private:
         static bool initialized;
-        static int start;
+        static std::chrono::time_point<std::chrono::high_resolution_clock> start;
 };
 
 

@@ -177,6 +177,7 @@ class EmbeddedTime {
       { return micseconds() + mseconds() * 1000 + seconds() * 1000 * 1000 + minutes() * 60000 * 1000 + hours() * 3600 * 1000 * 1000; }
 
     static const EmbeddedTime<Timer> Zero ;
+    static const EmbeddedTime<Timer> Infinity ;
     static const EmbeddedTime<Timer> Inf()  ;
     
   private:
@@ -238,10 +239,15 @@ class EmbeddedTime {
 };
 
 /** Public data **/
-template<class Timer> const EmbeddedTime<Timer> EmbeddedTime<Timer>::Zero;
+template<class Timer>
+const EmbeddedTime<Timer> EmbeddedTime<Timer>::Zero;
 
 template<class Timer> const EmbeddedTime<Timer> EmbeddedTime<Timer>::Inf() {
-  return EmbeddedTime( 32767, 59, 59, 999, 999) ;}  // Infinity constant 
+  return EmbeddedTime( 32767, 59, 59, 999, 999) ;
+}
+
+template<class Timer>
+const EmbeddedTime<Timer> EmbeddedTime<Timer>::Infinity = EmbeddedTime<Timer>::Inf();
 
 /** inline methods **/
 template<class Timer> inline const Hours &EmbeddedTime<Timer>::hours() const {

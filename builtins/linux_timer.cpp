@@ -1,33 +1,22 @@
-#include <time.h>
-
+#include <ratio>
 #include <ecdboost/builtins/linux_timer.hpp>
 
-
 bool LinuxTimer::initialized = false;
-int LinuxTimer::start = 0;
 
-int LinuxTimer::get_microseconds(){
-    timespec ts;
-
-    clock_gettime(CLOCK_REALTIME, &ts);
-
-    int seconds = (int) ts.tv_sec;
-    int nanoseconds = (int) ts.tv_nsec;
-
-    return 1000000 * seconds + nanoseconds / 1000;
-
-}
+std::chrono::time_point<std::chrono::high_resolution_clock> LinuxTimer::start = std::chrono::high_resolution_clock::now();
 
 void LinuxTimer::initialize() {
     initialized = true;
-    start = get_microseconds();
+    start = std::chrono::high_resolution_clock::now();
 }
 
 int LinuxTimer::micro_seconds_since_started() {
-    if (!initialized) {
-        initialize();
-    }
+    if (!initialized) { initialize(); }
 
-    return (get_microseconds() - start);
+    auto current = std::chrono::high_resolution_clock::now();
+
+    std::chrono::duration<long long, std::nano> difference = (current - start);
+
+    return (int)(difference.count() / 1000);
 }
 
