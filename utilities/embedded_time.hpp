@@ -17,8 +17,6 @@ typedef int  Seconds ;
 typedef int  MSeconds ;
 typedef int  MicSeconds ;
 
-using RTIME = int;
-
 template<class Timer>
 class EmbeddedTime {
   public:
@@ -41,7 +39,7 @@ class EmbeddedTime {
     EmbeddedTime( const std::string &t )
       { makeFrom(t); }
 
-    EmbeddedTime( const RTIME micseconds )
+    EmbeddedTime( const int micseconds )
       : hour( 0 )
       , min( 0 )
       , sec( 0 )
@@ -194,8 +192,8 @@ class EmbeddedTime {
     }
 
   public:
-    EmbeddedTime<Timer> &makeFrom( RTIME xentime ) {
-      RTIME mictime = xentime; // need to divide by 1000 if using Xenomai
+    EmbeddedTime<Timer> &makeFrom( int xentime ) {
+      int mictime = xentime; // need to divide by 1000 if using Xenomai
       minutes( static_cast< int >( mictime/ (1000*1000*60) ) ) ;
       mictime -= (minutes()*1000*1000*60);
       seconds( static_cast< int >( mictime/(1000*1000) ) ) ;

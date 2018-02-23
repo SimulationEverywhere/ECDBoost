@@ -16,11 +16,11 @@ class Adder : public pdevs::atomic<TIME, MSG> {
   public:
     explicit Adder() noexcept :
     atomic<TIME, MSG>("adder") {
-      next_internal = pdevs::atomic<TIME, MSG>::infinity;
+      next_internal = TIME::Infinity;
     }
 
     void internal() noexcept {
-      next_internal = pdevs::atomic<TIME, MSG>::infinity;
+      next_internal = TIME::Infinity;
     }
 
     TIME advance() const noexcept {
