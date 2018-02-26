@@ -20,41 +20,46 @@ typedef int  MicSeconds ;
 template<class Timer>
 class EmbeddedTime {
   public:
-    EmbeddedTime()
-      : hour( 0 )
-      , min( 0 )
-      , sec( 0 )
-      , msec( 0 )
-      , micsec( 0 )
-      { normalize(); }
+    // ** Constructors ** //
+    EmbeddedTime() :
+      hour( 0 ),
+      min( 0 ),
+      sec( 0 ),
+      msec( 0 ),
+      micsec( 0 ) {
+      normalize();
+    }
 
-    EmbeddedTime( Hours h , Minutes m , Seconds s , MSeconds ms , MicSeconds mics = 0)
-      : hour( h )
-      , min( m )
-      , sec( s )
-      , msec( ms )
-      , micsec( mics)
-      { normalize(); }
+    EmbeddedTime( Hours h, Minutes m, Seconds s, MSeconds ms, MicSeconds mics = 0) :
+      hour( h ),
+      min( m ),
+      sec( s ),
+      msec( ms ),
+      micsec( mics ) {
+      normalize();
+    }
     
-    EmbeddedTime( const std::string &t )
-      { makeFrom(t); }
+    EmbeddedTime( const std::string &t ) {
+      makeFrom(t);
+    }
 
-    EmbeddedTime( const int micseconds )
-      : hour( 0 )
-      , min( 0 )
-      , sec( 0 )
-      , msec( 0 )
-      , micsec( 0)
-      { makeFrom( micseconds ); }
+    EmbeddedTime( const int micseconds ) :
+      hour( 0 ),
+      min( 0 ),
+      sec( 0 ),
+      msec( 0 ),
+      micsec( 0 ) {
+      makeFrom( micseconds );
+    }
     
-    EmbeddedTime( const EmbeddedTime<Timer> &t)
-      : hour( t.hours() )
-      , min( t.minutes() )
-      , sec( t.seconds() )
-      , msec( t.mseconds() )
-      , micsec( t.micseconds() )
-      {}
+    EmbeddedTime( const EmbeddedTime<Timer> &t) :
+      hour( t.hours() ),
+      min( t.minutes() ),
+      sec( t.seconds() ),
+      msec( t.mseconds() ),
+      micsec( t.micseconds() ) {}
 
+    // ** Real time interface ** //
     static void initializeTimer() {
       Timer::initialize();
     };
@@ -72,39 +77,42 @@ class EmbeddedTime {
     EmbeddedTime<Timer> &micseconds( const MicSeconds & ) ;
 
     // ** Queries ** // 
-    const Hours    &hours() const ;
-    const Minutes  &minutes() const ;
-    const Seconds  &seconds() const ;
+    const Hours &hours() const ;
+    const Minutes &minutes() const ;
+    const Seconds &seconds() const ;
     const MSeconds &mseconds() const ;
     const MicSeconds &micseconds() const ;
 
+    // ** Operators ** //
     EmbeddedTime<Timer> operator +( const EmbeddedTime<Timer> &t ) const {
-      if ( *this == EmbeddedTime<Timer>::Inf() || t == EmbeddedTime<Timer>::Inf() )
-        
+      if ( *this == EmbeddedTime<Timer>::Inf() || t == EmbeddedTime<Timer>::Inf() ) {
         return EmbeddedTime<Timer>::Inf();
-
-      EmbeddedTime<Timer> st(
-        hours() + t.hours(),
-        minutes() + t.minutes(),
-        seconds() + t.seconds(),
-        mseconds() + t.mseconds(), 
-        micseconds() + t.micseconds()
-      );
-      
-      return st;
+      } else {
+        EmbeddedTime<Timer> st(
+          hours() + t.hours(),
+          minutes() + t.minutes(),
+          seconds() + t.seconds(),
+          mseconds() + t.mseconds(), 
+          micseconds() + t.micseconds()
+        );
+        return st;
+      }
     }
  
     EmbeddedTime<Timer> operator -( const EmbeddedTime<Timer> &t ) const {
-      if ( *this == EmbeddedTime<Timer>::Inf() || t == EmbeddedTime<Timer>::Inf() )
+      if ( *this == EmbeddedTime<Timer>::Inf() || t == EmbeddedTime<Timer>::Inf() ) {
         return EmbeddedTime<Timer>::Inf();
+      } else {
+        EmbeddedTime<Timer> st(
+          hours() - t.hours(),
+          minutes() - t.minutes(),
+          seconds() - t.seconds(),
+          mseconds() - t.mseconds(),
+          micseconds() - t.micseconds()
+        );
 
-      EmbeddedTime<Timer> st( hours() - t.hours(),
-         minutes() - t.minutes(),
-         seconds() - t.seconds(),
-         mseconds() - t.mseconds(),
-         micseconds() - t.micseconds() );
-
-      return st; 
+        return st; 
+      }
     }
 
     EmbeddedTime<Timer> &operator =( const EmbeddedTime<Timer> &t ) {
@@ -117,19 +125,21 @@ class EmbeddedTime {
     }
 
     bool operator ==( const EmbeddedTime<Timer> &t ) const {
-      return ( hours()    == t.hours()    &&
-         minutes()  == t.minutes()  &&
-         seconds()  == t.seconds()  &&
-         mseconds() == t.mseconds()   &&
-         micseconds() == t.micseconds() );
+      return hours() == t.hours() &&
+        minutes() == t.minutes() &&
+        seconds() == t.seconds() &&
+        mseconds() == t.mseconds() &&
+        micseconds() == t.micseconds();
     }
 
     bool operator !=( const EmbeddedTime<Timer> &t ) const {
       return !((*this) == t);
     }
 
-    EmbeddedTime<Timer> &operator =( const std::string &t ) // assignment operator
-      {makeFrom(t); return *this;}
+    EmbeddedTime<Timer> &operator =( const std::string &t ) {
+      makeFrom(t);
+      return *this;
+    }
     
     EmbeddedTime<Timer> &operator -=( const EmbeddedTime<Timer> &t ) ;
     EmbeddedTime<Timer> &operator +=( const EmbeddedTime<Timer> &t ) ;
@@ -168,22 +178,24 @@ class EmbeddedTime {
       return std::string( buf );
     }
 
-    long long asMsecs() const
-      { return mseconds() + seconds() * 1000 + minutes() * 60000 + hours() * 3600 * 1000; }
+    long long asMsecs() const {
+      return mseconds() + seconds() * 1000 + minutes() * 60000 + hours() * 3600 * 1000;
+    }
 
-    long long asMicsecs() const
-      { return micseconds() + mseconds() * 1000 + seconds() * 1000 * 1000 + minutes() * 60000 * 1000 + hours() * 3600 * 1000 * 1000; }
+    long long asMicsecs() const {
+      return micseconds() + mseconds() * 1000 + seconds() * 1000 * 1000 + minutes() * 60000 * 1000 + hours() * 3600 * 1000 * 1000;
+    }
 
     static const EmbeddedTime<Timer> Zero ;
     static const EmbeddedTime<Timer> Infinity ;
     static const EmbeddedTime<Timer> Inf()  ;
     
   private:
-    Hours hour  ;
-    Minutes min ;
-    Seconds sec ;
-    MSeconds msec ;
-    MicSeconds micsec ;
+    Hours hour;
+    Minutes min;
+    Seconds sec;
+    MSeconds msec;
+    MicSeconds micsec;
     
     EmbeddedTime<Timer> &makeFrom( const std::string &str ) {
       sscanf( str.c_str(), "%d:%d:%d:%d", &hour, &min, &sec, &msec); micsec = 0;
@@ -192,42 +204,39 @@ class EmbeddedTime {
     }
 
   public:
-    EmbeddedTime<Timer> &makeFrom( int xentime ) {
-      int mictime = xentime; // need to divide by 1000 if using Xenomai
-      minutes( static_cast< int >( mictime/ (1000*1000*60) ) ) ;
-      mictime -= (minutes()*1000*1000*60);
-      seconds( static_cast< int >( mictime/(1000*1000) ) ) ;
-      mictime -= (seconds()*1000*1000);
-      mseconds( static_cast< int >( mictime/1000) );
-      mictime -= (mseconds()*1000);
-      micseconds(static_cast< int >( mictime));
+    EmbeddedTime<Timer> &makeFrom( int mic_seconds ) {
+      minutes( static_cast< int >( mic_seconds / (1000*1000*60) ) ) ;
+      mic_seconds -= (minutes()*1000*1000*60);
+      seconds( static_cast< int >( mic_seconds / (1000*1000) ) ) ;
+      mic_seconds -= (seconds()*1000*1000);
+      mseconds( static_cast< int >( mic_seconds / 1000) );
+      mic_seconds -= (mseconds()*1000);
+      micseconds(static_cast< int >( mic_seconds));
       normalize() ;
       return *this ;
     }
 
     EmbeddedTime<Timer> &normalize() {
       // 0..999 Microseconds
-      adjust( micsec, msec , 1000 );
+      adjust( micsec, msec, 1000 );
 
       // 0..999 Miliseconds
-      adjust( msec, sec , 1000 );
+      adjust( msec, sec, 1000 );
 
       // 0..59 seconds
-      adjust( sec , min , 60   );
+      adjust( sec, min, 60 );
 
       // 0..59 minutes
-      adjust( min , hour, 60   );
+      adjust( min, hour, 60 );
 
       return *this ;
     }
 
     EmbeddedTime<Timer> &adjust( int &left, int &right, int maxVal ) {
-      if( left >= maxVal )
-      {
+      if( left >= maxVal ) {
         right += left / maxVal ;
         left %= maxVal ;
-      } else if( left < 0 )
-      {
+      } else if( left < 0 ) {
         register int aux = std::abs( left / maxVal ) + ( left % maxVal == 0 ? 0 : 1 );
         right -= aux ;
         left += maxVal * aux ;
@@ -241,7 +250,7 @@ template<class Timer>
 const EmbeddedTime<Timer> EmbeddedTime<Timer>::Zero;
 
 template<class Timer> const EmbeddedTime<Timer> EmbeddedTime<Timer>::Inf() {
-  return EmbeddedTime( 32767, 59, 59, 999, 999) ;
+  return EmbeddedTime( 32767, 59, 59, 999, 999 );
 }
 
 template<class Timer>
