@@ -73,7 +73,7 @@ public:
 
 
 
-private:
+protected:
     std::string portName;
     TIME pollingPeriod;
     //std::shared_ptr<model<TIME>> connectedModel; //to be included later
