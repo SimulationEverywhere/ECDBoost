@@ -31,8 +31,6 @@
 #include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
 
 /**
  * @brief The pdevs::port class is the base of all top hardware ports.
@@ -80,9 +78,7 @@ protected:
     //Port( const std::string & , const ModelId & ) ;  // Default constructor
 };
 
-}
-}
-}
+}  // Closing namespace
 
-#endif // ECDBOOST_SIMULATION_PDEVS_PORT_H
+#endif  // ECDBOOST_SIMULATION_PDEVS_PORT_H
 

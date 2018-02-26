@@ -35,9 +35,6 @@
 #include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
-namespace basic_models {
 /**
  * @brief Processor PDEVS Model.
  *
@@ -110,9 +107,7 @@ public:
 
 };
 
-}
-}
-}
-}
+}  // Closing namespaces
+
 
 #endif // ECDBOOST_SIMULATION_PDEVS_PROCESSOR_H

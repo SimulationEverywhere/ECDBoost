@@ -32,7 +32,7 @@
 #include <typeinfo>
 #include <sstream>
 
-namespace bsp = boost::simulation::pdevs;
+namespace bsp = ecdboost;
 
 namespace pdevs_tools {
 /**

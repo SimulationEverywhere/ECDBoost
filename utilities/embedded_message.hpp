@@ -8,7 +8,7 @@
 #include <ecdboost/simulation/model.hpp>
 
 using namespace std;
-using namespace ecdboost::simulation;
+using namespace ecdboost;
 
 using Value      = int;
 using tofromPort = string;

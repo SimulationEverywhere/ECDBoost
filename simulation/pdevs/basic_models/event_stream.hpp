@@ -36,9 +36,6 @@
 #include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
-namespace basic_models {
 /**
  * @brief event_stream PDEVS Model.
  *
@@ -174,9 +171,7 @@ public:
 
 };
 
-}
-}
-}
-}
+}  // Closing namespaces
+
 
 #endif // ECDBOOST_SIMULATION_PDEVS_EVENT_STREAM_H

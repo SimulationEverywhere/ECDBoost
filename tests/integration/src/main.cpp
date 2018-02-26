@@ -1,21 +1,22 @@
+// ECDBoost files
 #include <ecdboost/simulation.hpp>
 #include <ecdboost/utilities/embedded_time.hpp>
 #include <ecdboost/utilities/embedded_message.hpp>
 #include <ecdboost/builtins/linux_timer.hpp>
 #include <ecdboost/builtins/output_logger_port.hpp>
 
+// Own files
 #include "atomic_models/adder.hpp"
 #include "ports/file_reader.hpp"
 
 using namespace std;
-using namespace ecdboost::simulation;
-using namespace ecdboost::simulation::pdevs;
-using namespace ecdboost::simulation::pdevs::basic_models;
+using namespace ecdboost;
 
 using Time = EmbeddedTime<LinuxTimer>;
 using Message = EmbeddedMessage<Time>;
 
 int main(){
+
 #ifdef ENABLE_SIMULATION
     auto atomic_adder = make_atomic_ptr<Adder<Time, Message>>();
 

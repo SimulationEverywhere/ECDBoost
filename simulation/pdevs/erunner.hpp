@@ -35,8 +35,6 @@
 #include <ecdboost/simulation/pdevs/driver.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
 
 
 /**
@@ -182,10 +180,7 @@ public:
     }
 };
 
-
-}
-}
-}
+}  // Closing namespace
 
 
 #endif // ECDBOOST_SIMULATION_PDEVS_ERUNNER_H

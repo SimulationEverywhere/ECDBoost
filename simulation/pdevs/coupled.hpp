@@ -34,8 +34,6 @@
 #include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
 
 /**
  * @brief The coupled class represents PDEVS coupled models
@@ -282,9 +280,8 @@ public:
 
 };
 
-}
-}
-}
+}  // Closing namespace
+
 
 #endif // ECDBOOST_SIMULATION_PDEVS_COUPLED_H
 

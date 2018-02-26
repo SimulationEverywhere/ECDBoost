@@ -34,12 +34,7 @@
 #include <ecdboost/simulation/pdevs/atomic.hpp>
 #include <ecdboost/simulation/pdevs/port.hpp>
 
-using namespace ecdboost;
-using namespace simulation;
-using namespace pdevs;
-
 namespace ecdboost {
-namespace simulation {
 
 /**
  * @brief create a pointer to a new atomic model of kind MODEL with its constructor parameters
@@ -61,7 +56,7 @@ std::shared_ptr<port<typename MODEL::time_type, typename MODEL::message_type>> m
     return std::make_shared<MODEL>(std::forward<Args>(args)...);
 }
 
-}}  // Closing namespaces
+}  // Closing namespace
 
 
 #endif // ECDBOOST_SIMULATION_CONVENIENCE_H

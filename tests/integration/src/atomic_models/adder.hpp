@@ -4,11 +4,9 @@
 #include <ecdboost/simulation.hpp>
 
 using namespace ecdboost;
-using namespace ecdboost::simulation;
-using namespace ecdboost::simulation::pdevs;
 
 template<class TIME, class MSG>
-class Adder : public pdevs::atomic<TIME, MSG> {
+class Adder : public atomic<TIME, MSG> {
   private:
     TIME next_internal;
     int my_value;

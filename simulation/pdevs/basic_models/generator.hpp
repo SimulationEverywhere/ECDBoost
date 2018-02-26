@@ -33,9 +33,6 @@
 #include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
-namespace basic_models {
 /**
  * @brief Generator PDEVS Model
  *
@@ -93,9 +90,8 @@ public:
 
 };
 
-}
-}
-}
-}
+}  // Closing namespaces
+
+
 #endif // ECDBOOST_SIMULATION_PDEVS_BM_GENERATOR_H
 

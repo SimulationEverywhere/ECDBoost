@@ -38,8 +38,6 @@
 #include <ecdboost/simulation/pdevs/atomic.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
 
 template<class, class>
 class nullqueue{
@@ -562,7 +560,8 @@ public:
 
 };
 
-}}}  // Closing namespaces
+}  // Closing namespaces
+
 
 #endif // ECDBOOST_SIMULATION_PDEVS_COORDINATOR_H
 

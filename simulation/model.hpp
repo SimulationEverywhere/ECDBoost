@@ -33,7 +33,6 @@
 #include <string>
 
 namespace ecdboost {
-namespace simulation {
 
 /**
  * @brief Model class is the base of the modelling hierarchy.
@@ -47,7 +46,7 @@ class model {
         virtual const std::string asString() const { return ""; };
 };
 
-}}  // Closing namespaces
+}  // Closing namespace
 
 
 #endif // ECDBOOST_SIMULATION_MODEL_H

@@ -33,8 +33,6 @@
 #include <ecdboost/simulation/model.hpp>
 
 namespace ecdboost {
-namespace simulation {
-namespace pdevs {
 
 /**
  * @brief The pdevs::atomic class is the base for all PDEVS atomic models.
@@ -96,7 +94,7 @@ private:
     std::string modelName;
 };
 
-}}}  // Closing namespaces
+}  // Closing namespaces
 
 
 #endif // ECDBOOST_SIMULATION_PDEVS_ATOMIC_H
