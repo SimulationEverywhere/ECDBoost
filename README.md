@@ -15,7 +15,7 @@ After installation you need to let your compiler know where this library is plac
 To use ECDBoost just include the folder where you cloned the project when compiling.
 The core components of this library are header-only files, so you don't need to worry about extra object files.
 
-For instance the flag `-I<path>` will suffice, `<path>` being the path to where this project was cloned.
+For instance the `g++` flag `-I<path>` will suffice, `<path>` being the path to where this project was cloned.
 
 Some extra buitlins components are however divided into source and header files.
 
@@ -43,5 +43,8 @@ static int micro_seconds_since_started();
 
 A working timer is provided as an example in `buitlins/linux_timer.hpp`.
 
+## Example
 
+In `tests/integration/` you can found a fairly enough complete example to get started.
+Note that this example can be run in a desktop computer since the its Timer object is prepared for that.
 
