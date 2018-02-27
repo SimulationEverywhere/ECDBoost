@@ -3,8 +3,6 @@
 #include <fstream>
 
 
-using Value = int;
-
 template<class TIME, class MSG>
 class FileReader: public port<TIME, MSG> {
   public:
@@ -21,7 +19,7 @@ class FileReader: public port<TIME, MSG> {
     }
 
     void print() noexcept {}
-    bool pDriver(Value &v) const noexcept {
+    bool pDriver(typename port<TIME, MSG>::MSG_VALUE &v) const noexcept {
       if (vector_index >= values.size()) {
         v = -1;
       } else {

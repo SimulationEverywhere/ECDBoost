@@ -13,7 +13,7 @@ using namespace std;
 using namespace ecdboost;
 
 using Time = EmbeddedTime<LinuxTimer>;
-using Message = EmbeddedMessage<Time>;
+using Message = EmbeddedMessage<Time, int>;
 
 int main(){
 

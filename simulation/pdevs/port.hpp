@@ -47,7 +47,7 @@ public:
     using time_type=TIME;
     using message_type=MSG; //Message suggested for embedded execution is eMessage
     using model_type=port<TIME, MSG>;
-    using Value=int; //Datagram; //int; //[ALI]
+    using MSG_VALUE = typename MSG::inner_type;
 
     port(const std::string &name) noexcept :portName( name ), pollingPeriod( TIME(0,0,0,0) ) {}
     port(const std::string &name, const TIME &pollingP) noexcept :portName( name ), pollingPeriod( pollingP ) {}
@@ -55,7 +55,7 @@ public:
     /**
      * @brief pDriver converts received signals into hardware commands or vice-versa - To be implemented by the user
      */
-    virtual bool pDriver(Value&) const noexcept = 0;
+    virtual bool pDriver(MSG_VALUE&) const noexcept = 0;
     /**
      * @brief asString returns the name of the port
      */

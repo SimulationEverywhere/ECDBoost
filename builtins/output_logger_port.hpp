@@ -1,8 +1,6 @@
 #include <fstream>
 #include <string>
 
-using Value = int;
-
 template<class TIME, class MSG>
 class OutputLoggerPort : public port<TIME, MSG> {
   public:
@@ -16,7 +14,7 @@ class OutputLoggerPort : public port<TIME, MSG> {
     }
 
     void print() noexcept {}
-    bool pDriver(Value &v) const noexcept {
+    bool pDriver(typename port<TIME, MSG>::MSG_VALUE &v) const noexcept {
       out_file.open(file_name, std::fstream::app);
 
       out_file

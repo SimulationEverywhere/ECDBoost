@@ -10,16 +10,17 @@
 using namespace std;
 using namespace ecdboost;
 
-using Value      = int;
 using tofromPort = string;
 
-template<class TIME>
+template<class TIME, class VALUE>
 struct EmbeddedMessage {
+
+  using inner_type = VALUE;
 
   TIME tm;
   std::shared_ptr<model<TIME>> to;
   tofromPort port;
-  Value val;
+  VALUE val;
 
   EmbeddedMessage() :
     tm(TIME::Zero),
@@ -27,13 +28,13 @@ struct EmbeddedMessage {
     port(""),
     val(0) {  }
 
-  EmbeddedMessage(const std::shared_ptr<model<TIME>>& other_model, const tofromPort& other_port, const Value& other_val) :
+  EmbeddedMessage(const std::shared_ptr<model<TIME>>& other_model, const tofromPort& other_port, const VALUE& other_val) :
     tm(TIME::currentTime()),
     to(other_model),
     port(other_port),
     val(other_val) {  }
 
-  EmbeddedMessage(const tofromPort& other_port, const Value& other_val) :
+  EmbeddedMessage(const tofromPort& other_port, const VALUE& other_val) :
     tm(TIME::currentTime()), 
     to(nullptr),
     port(other_port),
@@ -45,13 +46,13 @@ struct EmbeddedMessage {
     port(other_port),
     val(0) {  }
 
-  EmbeddedMessage(const EmbeddedMessage<TIME>& other) :
+  EmbeddedMessage(const EmbeddedMessage<TIME, VALUE>& other) :
     tm(other.tm),
     to(other.to),
     port(other.port),
     val(other.val) {  }
 
-  EmbeddedMessage(EmbeddedMessage<TIME>* other) :
+  EmbeddedMessage(EmbeddedMessage<TIME, VALUE>* other) :
     tm(other->tm),
     to(other->to),
     port(other->port),
@@ -71,8 +72,8 @@ struct EmbeddedMessage {
   void print() { }
 };
 
-template<class TIME>
-ostream& operator<<(ostream& os, const EmbeddedMessage<TIME>& msg) {
+template<class TIME, class VALUE>
+ostream& operator<<(ostream& os, const EmbeddedMessage<TIME, VALUE>& msg) {
   os << "Message("
     << "time: "       << msg.tm.asString() 
     << ", to-model: " << "TODO"             // add model name later here 
