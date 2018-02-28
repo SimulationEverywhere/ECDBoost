@@ -1,3 +1,5 @@
+#include <iostream>
+
 // ECDBoost files
 #include <ecdboost/simulation.hpp>
 #include <ecdboost/utilities/embedded_time.hpp>
@@ -23,7 +25,8 @@ int main(){
     shared_ptr<flattened_coupled<Time, Message>> top_component( new flattened_coupled<Time, Message>{{atomic_adder}, {atomic_adder}, {}, {atomic_adder}});
 
     auto file_reader_port = make_port_ptr< FileReader<Time, Message>, const string &, const Time & >("reader_port", Time(0,0,0,200));
-    auto file_writer_port = make_port_ptr< OutputLoggerPort<Time, Message>, const string &, const string & >("writer_port", "output.txt");
+    std::ostream &log_stream = std::cout;
+    auto file_writer_port = make_port_ptr< OutputLoggerPort<Time, Message>, const string &, std::ostream & >("writer_port", log_stream);
 
     erunner<Time, Message> root{
         top_component,
