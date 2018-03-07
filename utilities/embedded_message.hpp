@@ -12,29 +12,29 @@ using namespace ecdboost;
 
 using tofromPort = string;
 
-template<class TIME, class VALUE>
+template<class TIME, class CONTENT_TYPE>
 struct EmbeddedMessage {
 
-  using inner_type = VALUE;
+  using inner_type = CONTENT_TYPE;
 
   TIME tm;
   std::shared_ptr<model<TIME>> to;
   tofromPort port;
-  VALUE val;
+  CONTENT_TYPE val;
 
   EmbeddedMessage() :
     tm(TIME::Zero),
     to(nullptr),
     port(""),
-    val(0) {  }
+    val() {  }
 
-  EmbeddedMessage(const std::shared_ptr<model<TIME>>& other_model, const tofromPort& other_port, const VALUE& other_val) :
+  EmbeddedMessage(const std::shared_ptr<model<TIME>>& other_model, const tofromPort& other_port, const CONTENT_TYPE& other_val) :
     tm(TIME::currentTime()),
     to(other_model),
     port(other_port),
     val(other_val) {  }
 
-  EmbeddedMessage(const tofromPort& other_port, const VALUE& other_val) :
+  EmbeddedMessage(const tofromPort& other_port, const CONTENT_TYPE& other_val) :
     tm(TIME::currentTime()), 
     to(nullptr),
     port(other_port),
@@ -46,13 +46,13 @@ struct EmbeddedMessage {
     port(other_port),
     val(0) {  }
 
-  EmbeddedMessage(const EmbeddedMessage<TIME, VALUE>& other) :
+  EmbeddedMessage(const EmbeddedMessage<TIME, CONTENT_TYPE>& other) :
     tm(other.tm),
     to(other.to),
     port(other.port),
     val(other.val) {  }
 
-  EmbeddedMessage(EmbeddedMessage<TIME, VALUE>* other) :
+  EmbeddedMessage(EmbeddedMessage<TIME, CONTENT_TYPE>* other) :
     tm(other->tm),
     to(other->to),
     port(other->port),
@@ -62,7 +62,7 @@ struct EmbeddedMessage {
     tm   =  TIME::Zero;
     to   =  nullptr;
     port =  "";
-    val  =  0;
+    val  =  CONTENT_TYPE();
   }
 
   bool isEmpty() {
@@ -72,8 +72,8 @@ struct EmbeddedMessage {
   void print() { }
 };
 
-template<class TIME, class VALUE>
-ostream& operator<<(ostream& os, const EmbeddedMessage<TIME, VALUE>& msg) {
+template<class TIME, class CONTENT_TYPE>
+ostream& operator<<(ostream& os, const EmbeddedMessage<TIME, CONTENT_TYPE>& msg) {
   os << "Message("
     << "time: "       << msg.tm.asString() 
     << ", to-model: " << "TODO"             // add model name later here 

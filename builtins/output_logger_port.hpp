@@ -9,7 +9,7 @@ class OutputLoggerPort : public port<TIME, MSG> {
       output_stream(_o_stream) { }
 
     void print() noexcept {}
-    bool pDriver(typename port<TIME, MSG>::MSG_VALUE &v) const noexcept {
+    bool pDriver(typename port<TIME, MSG>::CONTENT &v) const noexcept {
       output_stream 
         << port<TIME, MSG>::portName << " received: "
         << v << " @ "

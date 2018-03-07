@@ -19,7 +19,7 @@ class FileReader: public port<TIME, MSG> {
     }
 
     void print() noexcept {}
-    bool pDriver(typename port<TIME, MSG>::MSG_VALUE &v) const noexcept {
+    bool pDriver(typename port<TIME, MSG>::CONTENT &v) const noexcept {
       if (vector_index >= values.size()) {
         v = -1;
       } else {
