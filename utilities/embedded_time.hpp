@@ -333,7 +333,7 @@ template<class Timer> inline std::istream &operator >>( std::istream &is, Embedd
   std::getline(is, _input, ':');
   Seconds new_sec = stoi(_input);
 
-  std::getline(is, _input);
+  is >> _input;
   MSeconds new_msec = stoi(_input);
 
   t = EmbeddedTime<Timer>(new_hour, new_min, new_sec, new_msec);
