@@ -40,12 +40,14 @@ int main () {
     assert(t.seconds() == 59);
     assert(t.mseconds() == 37);
     assert(a = 42);
-    input_stream >> t >> a;
-    assert(t.hours() == 2);
-    assert(t.minutes() == 42);
-    assert(t.seconds() == 42);
-    assert(t.mseconds() == 42);
-    assert(a = 42);
+    while (input_stream >> t >> a) {
+        std::cout << "reading line" << std::endl;
+        assert(t.hours() == 2);
+        assert(t.minutes() == 42);
+        assert(t.seconds() == 42);
+        assert(t.mseconds() == 42);
+        assert(a = 42);
+    }
     
 
     std::cout << "Testing realtime..." << std::endl;

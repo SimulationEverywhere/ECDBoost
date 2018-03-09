@@ -323,18 +323,18 @@ template<class Timer> inline std::ostream &operator <<( std::ostream &os, const 
 
 template<class Timer> inline std::istream &operator >>( std::istream &is, EmbeddedTime<Timer> &t ) {
   std::string _input;
+  Hours new_hour;
+  Minutes new_min;
+  Seconds new_sec;
+  MSeconds new_msec;
 
-  std::getline(is, _input, ':');
-  Hours new_hour = stoi(_input);
-
-  std::getline(is, _input, ':');
-  Minutes new_min = stoi(_input);
-
-  std::getline(is, _input, ':');
-  Seconds new_sec = stoi(_input);
-
-  is >> _input;
-  MSeconds new_msec = stoi(_input);
+  is >> new_hour;
+  is.ignore(1,':');
+  is >> new_min;
+  is.ignore(1,':');
+  is >> new_sec;
+  is.ignore(1,':');
+  is >> new_msec;
 
   t = EmbeddedTime<Timer>(new_hour, new_min, new_sec, new_msec);
 
