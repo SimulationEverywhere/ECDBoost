@@ -1,5 +1,6 @@
-#include <iostream>
+#include <fstream>
 #include <unistd.h>
+#include <cassert>
 
 #include <ecdboost/utilities/embedded_time.hpp>
 #include <ecdboost/builtins/linux_timer.hpp>
@@ -28,6 +29,16 @@ int main () {
     std::cout << (_t4 != _t2) << std::endl;
     std::cout << (_t2 < _t2bis) << std::endl;
     std::cout << std::endl;
+
+    std::ifstream input_stream("input.ev");
+    Time t;
+    input_stream >> t;
+    std::cout << t << std::endl;
+    assert(t.hours() == 1);
+    assert(t.minutes() == 59);
+    assert(t.seconds() == 59);
+    assert(t.mseconds() == 37);
+    
 
     std::cout << "Testing realtime..." << std::endl;
     Time::initializeTimer();

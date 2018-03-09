@@ -4,7 +4,7 @@
 
 /** include files **/
 #include <string> 
-#include <ostream>
+#include <iostream>
 #include <cstdlib>
 
 /** System call includes **/
@@ -319,6 +319,26 @@ template<class Timer> inline EmbeddedTime<Timer> &EmbeddedTime<Timer>::operator 
 template<class Timer> inline std::ostream &operator <<( std::ostream &os, const EmbeddedTime<Timer> &t ) {
   os << t.asString();
   return os;
+}
+
+template<class Timer> inline std::istream &operator >>( std::istream &is, EmbeddedTime<Timer> &t ) {
+  std::string _input;
+
+  std::getline(is, _input, ':');
+  Hours new_hour = stoi(_input);
+
+  std::getline(is, _input, ':');
+  Minutes new_min = stoi(_input);
+
+  std::getline(is, _input, ':');
+  Seconds new_sec = stoi(_input);
+
+  std::getline(is, _input);
+  MSeconds new_msec = stoi(_input);
+
+  t = EmbeddedTime<Timer>(new_hour, new_min, new_sec, new_msec);
+
+  return is;
 }
 
 #endif // EMBEDDED_TIME__HPP
