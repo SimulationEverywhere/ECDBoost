@@ -75,11 +75,10 @@ struct EmbeddedMessage {
 template<class TIME, class CONTENT_TYPE>
 ostream& operator<<(ostream& os, const EmbeddedMessage<TIME, CONTENT_TYPE>& msg) {
   os << "Message("
-    << "time: "       << msg.tm.asString() 
+    << "time: "       << msg.tm
     << ", to-model: " << "TODO"             // add model name later here 
     << ", port: "     << msg.port 
-    << ", value: "    << msg.val
-  << ")";
+    << ", value: "    << msg.val << ")";
 
   return os;
 }
