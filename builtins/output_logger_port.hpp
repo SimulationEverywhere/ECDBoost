@@ -11,9 +11,9 @@ class OutputLoggerPort : public port<TIME, MSG> {
     void print() noexcept {}
     bool pDriver(typename port<TIME, MSG>::CONTENT &v) const noexcept {
       output_stream 
-        << port<TIME, MSG>::portName << " received: "
-        << v << " @ "
-        << TIME::currentTime() << std::endl;
+        << port<TIME, MSG>::portName
+        << " received: " << v
+        << " @ " << TIME::currentTime() << std::endl;
     }
 
   protected:
